@@ -220,6 +220,11 @@ async function loadData() {
 $("ask").addEventListener("click", async () => {
   const q = $("question").value.trim();
   if (!q) return;
+  if (!tonightCSV || !routesCSV) {
+    $("answer").textContent = "Data has not loaded, so the AI would have nothing to go on. " +
+      "Open the GitHub Pages link (https://...github.io/Winterone/), not the file on your computer.";
+    return;
+  }
   $("answer").textContent = "Thinking...";
   // Send the data along with the question, clearly marked as data
   const withData =
